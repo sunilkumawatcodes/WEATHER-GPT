@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#07111f" name="theme-color"/>
+<title>WeatherGPT — Phone Edition</title>
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+</head>
+<body>
+<div class="app">
+<header>
+<div class="brand">🌦️ <span>WeatherGPT</span> <small style="font-size:11px;color:#9bb0c6">Phone Edition</small></div>
+<div class="searchrow">
+<input id="city" placeholder="Search city..." value="Hyderabad"/>
+<button class="btn primary" id="search">Search</button>
+<button class="btn" id="loc">📍</button>
+</div>
+<div class="status" id="status">Ready</div>
+</header>
+<main>
+<section class="page active" id="home">
+<div class="card hero">
+<div class="place" id="place">Hyderabad</div>
+<div class="temp" id="temp">--°</div>
+<div class="condition" id="condition">Loading weather…</div>
+<div class="metrics">
+<div class="metric">💧 Humidity<b id="humidity">--%</b></div>
+<div class="metric">💨 Wind<b id="wind">-- km/h</b></div>
+<div class="metric">🌧️ Rain chance<b id="rain">--%</b></div>
+<div class="metric">🌡️ Feels like<b id="feels">--°</b></div>
+</div>
+</div>
+<div class="card"><div class="title">🕒 Next 24 Hours</div><div class="hourly" id="hourly"></div></div>
+<div class="card"><div class="title">📅 7-Day Forecast</div><div class="forecast" id="forecast"></div></div>
+</section>
+<section class="page" id="map">
+<div class="card"><div class="title">🗺️ Live Weather Map</div>
+<div class="map-actions"><button class="btn" id="india">🇮🇳 India</button><button class="btn" id="center">📍 Center</button></div>
+<div id="weatherMap"></div>
+<p class="muted">Map data © OpenStreetMap contributors. Weather position follows the selected city.</p>
+</div>
+</section>
+<section class="page" id="ai">
+<div class="card"><div class="title">🤖 Ask WeatherGPT</div>
+<div class="chips">
+<button class="chip" data-q="Will it rain today?">🌧️ Rain today?</button>
+<button class="chip" data-q="Is it good for travel today?">✈️ Travel?</button>
+<button class="chip" data-q="What should I wear today?">👕 What to wear?</button>
+</div>
+<div class="searchrow" style="margin-top:10px"><input id="question" placeholder="Ask about the weather…"/><button class="btn primary" id="ask">Ask</button></div>
+<div class="answer" id="answer" style="margin-top:10px">Ask a question. If this page is connected to a WeatherGPT server, Gemini can answer through <code>/api/ai</code>.</div>
+</div>
+</section>
+<section class="page" id="travel">
+<div class="card"><div class="title">✈️ Travel Planner</div>
+<div class="two"><input id="from" placeholder="From" value="Hyderabad"/><input id="to" placeholder="To" value="Mumbai"/></div>
+<button class="btn primary" id="travelBtn" style="margin-top:10px;width:100%">Check Destination Weather</button>
+<div class="answer" id="travelAnswer" style="margin-top:10px">Enter a destination and check its live weather.</div>
+</div>
+</section>
+<section class="page" id="farmer">
+<div class="card"><div class="title">🌾 Farmer Mode</div>
+<select id="crop" style="width:100%"><option>Rice</option><option>Cotton</option><option>Maize</option><option>Chilli</option><option>Vegetables</option></select>
+<div class="answer" id="farm" style="margin-top:10px">Weather-based farm guidance will appear here.</div>
+</div>
+</section>
+<section class="page" id="settings">
+<div class="card"><div class="title">⚙️ Settings</div>
+<label class="muted">Temperature unit</label><select id="unit" style="width:100%;margin-top:6px"><option value="c">Celsius °C</option><option value="f">Fahrenheit °F</option></select>
+<p class="muted" style="margin-top:15px">Live weather uses Open-Meteo. It requires no API key.</p>
+<p class="muted">Gemini must be connected through a secure server; do not put your Gemini API key into this HTML file.</p>
+</div>
+</section>
+</main>
+<nav class="bottom">
+<button class="active" data-page="home">🏠<span>Home</span></button>
+<button data-page="map">🗺️<span>Map</span></button>
+<button data-page="ai">🤖<span>AI</span></button>
+<button data-page="travel">✈️<span>Travel</span></button>
+<button data-page="farmer">🌾<span>Farmer</span></button>
+<button data-page="settings">⚙️<span>Settings</span></button>
+</nav>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
