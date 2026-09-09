@@ -1,0 +1,80 @@
+:root {
+  --bg: #07111f;
+  --bg-gradient: radial-gradient(circle at 10% 0%, #15325b 0%, transparent 40%),
+                 radial-gradient(circle at 90% 15%, #251b47 0%, transparent 35%),
+                 #07111f;
+  --panel: #0d1c2f;
+  --panel-card: linear-gradient(145deg, #0d1e33, #112642);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --cyan: #58c7ff;
+  --cyan-glow: rgba(88, 199, 255, 0.25);
+  --green: #48e09a;
+  --yellow: #ffd166;
+  --orange: #ff9f43;
+  --red: #ff6575;
+  --radius: 16px;
+}
+
+/* Animations */
+@keyframes cycloneSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.cyclone-spiral {
+  font-size: 32px;
+  display: inline-block;
+  animation: cycloneSpin 4s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.8));
+}
+
+/* Mobile Responsive Navigation */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(6, 15, 28, 0.96);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--panel-border);
+  z-index: 2000;
+  padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px));
+  justify-content: space-around;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-nav button {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font-size: 10.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 4px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 8px;
+}
+
+.mobile-nav button.active {
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .sidebar { display: none; }
+  .mobile-nav { display: flex; }
+  .main { margin-left: 0; padding: 12px 12px calc(80px + env(safe-area-inset-bottom, 0px)); }
+  .grid { grid-template-columns: 1fr; }
+  .search-input { width: 100% !important; font-size: 16px !important; }
+  .map-wrapper { height: 420px; }
+}
