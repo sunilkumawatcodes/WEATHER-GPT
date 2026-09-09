@@ -1,0 +1,19 @@
+# WeatherGPT Server Configuration
+PORT=3000
+HOST=0.0.0.0
+NODE_ENV=development
+
+# Google Gemini AI Key
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-2.5-flash
+
+# Maps & Weather Providers
+GOOGLE_MAPS_API_KEY=
+
+# Database configuration
+DATABASE_PATH=./data/weathergpt.sqlite
+
+# Security & Rate Limiting
+RATE_LIMIT_WINDOW_MS=60000
+RATE_LIMIT_MAX_REQUESTS=120
+CORS_ORIGIN=*
