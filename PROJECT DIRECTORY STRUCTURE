@@ -1,0 +1,37 @@
+weathergpt-fullstack/
+├── .env                                  # Environment variables
+├── package.json                          # Project dependencies & scripts
+├── start.bat                             # Windows 1-click startup script
+│
+├── src/                                  # ─── BACKEND ───
+│   ├── server.js                         # Server bootstrap & lifecycle
+│   ├── app.js                            # HTTP router & request dispatcher
+│   ├── config/
+│   │   └── env.js                        # Environment loader
+│   ├── database/                         # ─── DATABASE ───
+│   │   ├── db.js                         # SQLite client & query methods
+│   │   └── schema.sql                    # SQL database table definitions
+│   ├── middleware/
+│   │   ├── security.js                   # Security headers (CSP, CORS, XSS)
+│   │   ├── rateLimiter.js                # In-memory IP rate limiter
+│   │   └── logger.js                     # HTTP request logger
+│   ├── services/
+│   │   ├── weatherService.js             # Weather & AQI fetcher + IMD risk engine
+│   │   ├── geminiService.js              # Gemini 2.5 Flash API + Multilingual Fallback
+│   │   └── geocodeService.js             # Location search & coordinates
+│   └── controllers/
+│       ├── weatherController.js          # Weather & radar API handlers
+│       ├── aiController.js               # AI chat & brief handlers
+│       ├── favoritesController.js        # Pinned places API
+│       └── settingsController.js         # Settings & API keys API
+│
+└── public/                               # ─── FRONTEND ───
+    ├── index.html                        # Semantic HTML5 & mobile interface
+    ├── manifest.webmanifest              # PWA mobile app manifest
+    ├── sw.js                             # Service worker for offline caching
+    ├── css/
+    │   └── style.css                     # Glassmorphism, animations & mobile CSS
+    └── js/
+        ├── api.js                        # Client HTTP API client
+        ├── i18n.js                       # 6-language dictionary & translations
+        └── app.js                        # GIS map, radar, speech & UI logic
